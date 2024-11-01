@@ -3,7 +3,7 @@
 
 @section('content')
 
-    <div class="container mt-5">
+    <div class="container mt-1">
         <div class="row justify-content-center">
             <div class="col-md-6 col-sm-8">
                 <div class="card p-5 form">
@@ -72,7 +72,7 @@
                                     @enderror
                                 </div>
                                 <div class="mb-3">
-                                    <button type="submit" class="btn btn-primary w-100">LOGIN</button>
+                                    <button type="submit" class="btn btn-warning w-100">CRIAR CONTA</button>
                                 </div>
                             </form>
                             <div class="mt-4">

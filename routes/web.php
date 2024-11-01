@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\MainController;
 use App\Http\Middleware\Logado;
 use App\Http\Middleware\NaoLogado;
 use Illuminate\Support\Facades\Route;
@@ -27,5 +28,8 @@ Route::middleware(Logado::class)->group(function(){
     Route::get('/home', function () {
         return view('home');
     })->name('home');
+
+    Route::get('/cad_aluno', [MainController::class, 'cad_aluno'])->name('cad_aluno');
+    Route::post('/cad_aluno_submit', [MainController::class, 'cad_aluno_submit'])->name('cad_aluno_submit');
 });
 
