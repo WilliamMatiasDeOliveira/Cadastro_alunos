@@ -1,36 +1,53 @@
 @extends('layouts.main_layout')
-@section('title', 'Login')
+@section('title', 'Home')
 
 @section('content')
-<style>
-    body{
-        background-color: #171923;
-    }
-</style>
 
-    <div class="container">
+    <div class="container-fluid">
 
-        <div class="row text-center mt-5">
-            <div class="#">
-                <img src="{{asset('assets/logo2.png')}}">
+
+            @include('layouts.nav_bar')
+
+
+        <div class="row col-12">
+            <div class="col text-center">
+                <h1 class='text-secondary'>TAG_NATIVA</h1>
+                <p class='text-secondary'>Sistemas Web</p>
             </div>
         </div>
 
-        <div class="row text-center">
-
-            <div class='col-6'>
-                <a href="{{route('cad_aluno')}}" class="btn btn-warning form-control">
-                    Cadastrar aluno
-                </a>
-            </div>
-            <div class='col-6'>
-                <a href="#" class="btn btn-primary form-control">
-                    Buscar aluno
-                </a>
-            </div>
-
+        <div class="row col-12 mt-5 mb-5 justify-content-center">
+                <div class='col-4'>
+                    <a href="{{route('cad_aluno')}}" class="btn btn-warning form-control">
+                        Cadastrar aluno
+                    </a>
+                </div>
         </div>
+
+        <div class="row col-12 mt-5 mb-5 justify-content-center">
+                <div class='col-4'>
+                    <a href="{{route('buscar_aluno')}}" class="btn btn-primary form-control">
+                        Buscar aluno
+                    </a>
+                </div>
+        </div>
+
+        <div class="row col-12 mt-5 mb-5 justify-content-center">
+                <div class='col-4'>
+                    <a href="#" class="btn btn-secondary form-control">
+                        Ver todos alunos
+                    </a>
+                </div>
+        </div>
+            </div>
 
     </div>
+
+   @if (session('cad_suc'))
+       <div class="alert alert-success text-center">
+            {{session('cad_suc')}}
+       </div>
+   @endif
+
 
 @endsection

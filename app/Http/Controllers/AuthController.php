@@ -108,4 +108,11 @@ class AuthController extends Controller
                 ->with('new_user', 'Usuário criado com sucesso');
 
     }
+
+    public function logout(Request $request){
+        $request->session()->invalidate(); // Invalida a sessão
+        $request->session()->regenerateToken(); // Regenera o token CSRF para maior segurança
+
+        return redirect()->route('login'); // Redireciona para a página de login
+    }
 }

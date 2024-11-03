@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('alunos', function (Blueprint $table) {
             $table->id();
+            $table->string('nome');
+            $table->date('data_nascimento');
+            $table->string('nome_mae');
+            $table->string('nome_pai')->nullable();
+            $table->string('turma');
+            $table->string('periodo');
+            $table->string('foto')->nullable();
+            $table->string('observacao')->nullable();
             $table->timestamps();
         });
     }
