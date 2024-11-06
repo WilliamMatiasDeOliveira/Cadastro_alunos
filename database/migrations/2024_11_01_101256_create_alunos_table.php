@@ -17,6 +17,7 @@ return new class extends Migration
             $table->date('data_nascimento');
             $table->string('nome_mae');
             $table->string('nome_pai')->nullable();
+            $table->string('rg');
             $table->string('turma');
             $table->string('periodo');
             $table->string('foto')->nullable();

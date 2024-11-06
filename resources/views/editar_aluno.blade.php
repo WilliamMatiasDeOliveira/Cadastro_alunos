@@ -1,5 +1,5 @@
 @extends('layouts.main_layout')
-@section('title', 'Cadastro')
+@section('title', 'Editar')
 
 @section('content')
 
@@ -9,6 +9,13 @@
 
                 @include('layouts.nav_bar')
 
+                <div class="row text-center">
+                    <div>
+                        <style>img{border-radius: 50px;width: 90px}</style>
+                        <img src="{{asset('img/'.$aluno->foto)}}" class="img-fluid w-10">
+                    </div>
+                </div>
+
                 <div class="card p-3 form">
                     <style>
                         .form {
@@ -17,13 +24,14 @@
                         }
                     </style>
                     <!-- form -->
-                    <form action="{{ route('cad_aluno_submit') }}" method="post"enctype='multipart/form-data'>
+                    <form action="{{ route('editar_aluno_submit', ['id'=>$aluno->id]) }}" method="post"enctype='multipart/form-data'>
                         @csrf
+
 
                         <div class="row mb-3">
                             <div class="col-4">
                                 <label for="nome" class="form-label">Nome do aluno</label>
-                                <input type="text" class="form-control" name="nome"value="{{ old('nome') }}">
+                                <input type="text" class="form-control" name="nome"value="{{$aluno->nome}}">
                                 {{-- show error --}}
                                 @error('nome')
                                     <div class="text-warning">
@@ -35,7 +43,7 @@
                             <div class="col-2">
                                 <label for="data_nascimento" class="form-label">Data de nascimento</label>
                                 <input type="date" class="form-control"
-                                    name="data_nascimento"value="{{ old('data_nascimento') }}">
+                                    name="data_nascimento"value="{{$aluno->data_nascimento}}">
                                 {{-- show error --}}
                                 @error('data_nascimento')
                                     <div class="text-warning">
@@ -46,7 +54,7 @@
 
                             <div class="col-2">
                                 <label for="telefone" class="form-label">Telefone do responsável</label>
-                                <input type="text" class="form-control" name="telefone"value="{{ old('telefone') }}">
+                                <input type="text" class="form-control" name="telefone"value="{{$aluno->contatos->first()->telefone}}">
                                 {{-- show error --}}
                                 @error('telefone')
                                     <div class="text-warning">
@@ -57,7 +65,7 @@
 
                             <div class="col-2">
                                 <label for="celular" class="form-label">Celular do responsável</label>
-                                <input type="text" class="form-control" name="celular"value="{{ old('celular') }}">
+                                <input type="text" class="form-control" name="celular"value="{{$aluno->contatos->first()->celular}}">
                                 {{-- show error --}}
                                 @error('celular')
                                     <div class="text-warning">
@@ -68,7 +76,7 @@
 
                             <div class="col-2">
                                 <label for="rg" class="form-label">RG</label>
-                                <input type="text" class="form-control" name="rg"value="{{ old('rg') }}">
+                                <input type="text" class="form-control" name="rg"value="{{$aluno->rg}}">
                                 {{-- show error --}}
                                 @error('rg')
                                     <div class="text-warning">
@@ -84,7 +92,7 @@
 
                             <div class="col-4">
                                 <label for="nome_mae" class="form-label">Nome da mãe</label>
-                                <input type="text" class="form-control" name="nome_mae"value="{{ old('nome_mae') }}">
+                                <input type="text" class="form-control" name="nome_mae"value="{{$aluno->nome_mae}}">
                                 {{-- show error --}}
                                 @error('nome_mae')
                                     <div class="text-warning">
@@ -95,7 +103,7 @@
 
                             <div class="col-4">
                                 <label for="nome_pai" class="form-label">Nome do pai</label>
-                                <input type="text" class="form-control" name="nome_pai"value="{{ old('nome_pai') }}">
+                                <input type="text" class="form-control" name="nome_pai"value="{{$aluno->nome_pai}}">
                                 {{-- show error --}}
                                 @error('nome_pai')
                                     <div class="text-warning">
@@ -106,7 +114,7 @@
 
                             <div class="col-4">
                                 <label for="email" class="form-label">E-mail para contato</label>
-                                <input type="email" class="form-control" name="email"value="{{ old('email') }}">
+                                <input type="email" class="form-control" name="email"value="{{$aluno->contatos->first()->email}}">
                                 {{-- show error --}}
                                 @error('email')
                                     <div class="text-warning">
@@ -119,7 +127,7 @@
                         <div class="row mb-5">
                             <div class="col-1">
                                 <label for="turma" class="form-label">Turma</label>
-                                <input type="text" class="form-control" name="turma"value="{{ old('turma') }}">
+                                <input type="text" class="form-control" name="turma"value="{{$aluno->turma}}">
                                 {{-- show error --}}
                                 @error('turma')
                                     <div class="text-warning">
@@ -130,7 +138,7 @@
 
                             <div class="col-1">
                                 <label for="periodo" class="form-label">Periodo</label>
-                                <input type="text" class="form-control" name="periodo"value="{{ old('periodo') }}">
+                                <input type="text" class="form-control" name="periodo"value="{{$aluno->periodo}}">
                                 {{-- show error --}}
                                 @error('periodo')
                                     <div class="text-warning">
@@ -141,7 +149,7 @@
 
                             <div class="col-4">
                                 <label for="foto" class="form-label">Foto</label>
-                                <input type="file" class="form-control" name="foto"value="{{ old('foto') }}">
+                                <input type="file" class="form-control" name="foto"value="{{$aluno->foto}}">
                                 {{-- show error --}}
                                 @error('foto')
                                     <div class="text-warning">
@@ -153,7 +161,7 @@
                             <div class="col-6">
                                 <label for="observacao" class="form-label">Observação</label>
                                 <input type="text" class="form-control"
-                                    name="observacao"value="{{ old('observacao') }}">
+                                    name="observacao"value="{{$aluno->observacao}}">
                                 {{-- show error --}}
                                 @error('observacao')
                                     <div class="text-warning">
@@ -163,25 +171,12 @@
                             </div>
 
                         </div>
-
+                        {{-- este trecho eu tenho que colocar dentro de um form --}}
                         <div class="row justify-content-center mb-5">
                             <div class="col-8">
-                                <button type="submit" class="btn btn-danger w-100">CADASTRAR</button>
+                                <button type="submit" class="btn btn-warning w-100">ATUALIZAR</button>
                             </div>
                         </div>
-
-                        @if (session('cad_fail'))
-                            <div class="alert alert-danger text-center">
-                                {{ session('cad_fail') }}
-                            </div>
-                        @endif
-
-                        @if (session('cad_suc'))
-                            <div class="alert alert-success text-center">
-                                {{ session('cad_suc') }}
-                            </div>
-                        @endif
-
 
                     </form>
 
@@ -198,3 +193,4 @@
 
 
 @endsection
+

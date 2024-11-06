@@ -31,8 +31,18 @@ Route::middleware(Logado::class)->group(function(){
     Route::get('/cad_aluno', [MainController::class, 'cad_aluno'])->name('cad_aluno');
     Route::post('/cad_aluno_submit', [MainController::class, 'cad_aluno_submit'])->name('cad_aluno_submit');
 
-    Route::get('buscar_aluno', [MainController::class, 'buscar_aluno'])->name('buscar_aluno');
-    Route::post('buscar_aluno_submit', [MainController::class, 'buscar_aluno_submit'])->name('buscar_aluno_submit');
+    Route::get('/buscar_aluno', [MainController::class, 'buscar_aluno'])->name('buscar_aluno');
+    Route::post('/buscar_aluno_submit', [MainController::class, 'buscar_aluno_submit'])->name('buscar_aluno_submit');
+
+    Route::get('/mostra_aluno', [MainController::class, 'mostra_aluno'])->name('mostra_aluno');
+
+    Route::get('/ver_todos_alunos', [MainController::class, 'ver_todos_alunos'])->name('ver_todos_alunos');
+
+    Route::post('/excluir_aluno', [MainController::class, 'excluir_aluno'])->name('excluir_aluno');
+
+    Route::get('editar_aluno/{id}', [MainController::class, 'editar_aluno'])->name('editar_aluno');
+    Route::post('editar_aluno_submit/{id}', [MainController::class, 'editar_aluno_submit'])->name('editar_aluno_submit');
+
 
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 

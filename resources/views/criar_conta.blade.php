@@ -6,7 +6,7 @@
     <div class="container mt-1">
         <div class="row justify-content-center">
             <div class="col-md-6 col-sm-8">
-                <div class="card p-5 form">
+                <div class="card p-5"style="background-color: #363636;color: white;">
 
                     <div class="text-center mb-2">
                         <h3>CRIAR CONTA</h3>

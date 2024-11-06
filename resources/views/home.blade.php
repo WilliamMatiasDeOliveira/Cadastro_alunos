@@ -6,48 +6,41 @@
     <div class="container-fluid">
 
 
-            @include('layouts.nav_bar')
+        @include('layouts.nav_bar')
 
-
-        <div class="row col-12">
-            <div class="col text-center">
-                <h1 class='text-secondary'>TAG_NATIVA</h1>
-                <p class='text-secondary'>Sistemas Web</p>
+        <div class="row col-12 mt-5 mb-5 justify-content-center">
+            <div class='col-4'>
+                <a href="{{ route('cad_aluno') }}" class="btn btn-warning form-control">
+                    Cadastrar aluno
+                </a>
             </div>
         </div>
 
         <div class="row col-12 mt-5 mb-5 justify-content-center">
-                <div class='col-4'>
-                    <a href="{{route('cad_aluno')}}" class="btn btn-warning form-control">
-                        Cadastrar aluno
-                    </a>
-                </div>
-        </div>
-
-        <div class="row col-12 mt-5 mb-5 justify-content-center">
-                <div class='col-4'>
-                    <a href="{{route('buscar_aluno')}}" class="btn btn-primary form-control">
-                        Buscar aluno
-                    </a>
-                </div>
-        </div>
-
-        <div class="row col-12 mt-5 mb-5 justify-content-center">
-                <div class='col-4'>
-                    <a href="#" class="btn btn-secondary form-control">
-                        Ver todos alunos
-                    </a>
-                </div>
-        </div>
+            <div class='col-4'>
+                <a href="{{ route('buscar_aluno') }}" class="btn btn-primary form-control">
+                    Buscar aluno
+                </a>
             </div>
+        </div>
+
+        <div class="row col-12 mt-5 mb-5 justify-content-center">
+            <div class='col-4'>
+                <form action="{{ route('ver_todos_alunos') }}" method="post">
+                    @csrf
+                    <input type="submit" class="btn btn-secondary form-control"value='Ver todos alunos'>
+                </form>
+            </div>
+        </div>
+    </div>
 
     </div>
 
-   @if (session('cad_suc'))
-       <div class="alert alert-success text-center">
-            {{session('cad_suc')}}
-       </div>
-   @endif
+    @if (session('cad_suc'))
+        <div class="alert alert-success text-center">
+            {{ session('cad_suc') }}
+        </div>
+    @endif
 
 
 @endsection
