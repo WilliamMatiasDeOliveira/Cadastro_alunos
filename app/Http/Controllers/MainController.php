@@ -162,6 +162,12 @@ class MainController extends Controller
         $aluno_id = $request->input('aluno_id');
 
         $aluno = Aluno::findOrFail($aluno_id);
+
+        // Verifica se o arquivo de foto existe e exclui
+        if ($aluno->foto && file_exists(public_path('img/' . $aluno->foto))) {
+            unlink(public_path('img/' . $aluno->foto));
+        }
+
         $aluno->delete();
 
         return redirect()->route('buscar_aluno')->with('delete', 'Aluno deletado');
@@ -172,7 +178,7 @@ class MainController extends Controller
 
         $aluno = Aluno::with('contatos')->find($aluno_id);
 
-        if(!$aluno){
+        if (!$aluno) {
             return redirect()->back();
         }
 
@@ -256,6 +262,6 @@ class MainController extends Controller
         $contato->save();
 
         return redirect()->route('ver_todos_alunos')
-        ->with('up_suc', 'Aluno atualizado com sucesso!');
+            ->with('up_suc', 'Aluno atualizado com sucesso!');
     }
 }

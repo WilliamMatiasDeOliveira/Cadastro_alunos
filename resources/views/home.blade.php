@@ -26,10 +26,9 @@
 
         <div class="row col-12 mt-5 mb-5 justify-content-center">
             <div class='col-4'>
-                <form action="{{ route('ver_todos_alunos') }}" method="post">
-                    @csrf
-                    <input type="submit" class="btn btn-secondary form-control"value='Ver todos alunos'>
-                </form>
+                <a href="{{ route('ver_todos_alunos') }}" class="btn btn-secondary form-control">
+                    Ver todos alunos
+                </a>
             </div>
         </div>
     </div>
